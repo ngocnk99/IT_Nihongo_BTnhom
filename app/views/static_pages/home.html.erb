@@ -1,0 +1,11 @@
+<p class = "navbar-text pull-right">
+    <% if user_signed_in? %>
+    Logged in as <%= current_user.email%>&nbsp|&nbsp
+    <%= link_to "プロファイル編集", edit_user_registration_path, :class => 'navbar-link' %>&nbsp|&nbsp
+    <%= link_to "サインアウト", destroy_user_session_path, method: :delete,  :class => 'navbar-link' %>&nbsp|&nbsp
+    <% else%>
+    <%= link_to "サインイン", new_user_session_path, :class => 'navbar-link' %>&nbsp|&nbsp
+    <%= link_to "ユーザ登録", new_user_registration_path, :class => 'navbar-link' %>&nbsp|&nbsp
+    <% end%>
+</p>
+<h1>HOME PAGE</h1>
