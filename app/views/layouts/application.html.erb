@@ -7,6 +7,20 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <p class = "navbar-text pull-right">
+    <%= link_to "Home in japanese", '/'%>
+    <br>
+    <% if user_signed_in? %>
+    Logged in as <%= current_user.email%>&nbsp|&nbsp
+    <br>
+    <%= link_to "プロファイル編集", edit_user_registration_path, :class => 'navbar-link' %>
+    <%= link_to "サインアウト", destroy_user_session_path, method: :delete,  :class => 'navbar-link' %>&nbsp|&nbsp
+    <% else%>
+    <%= link_to "サインイン", new_user_session_path, :class => 'navbar-link' %>&nbsp|&nbsp
+    <%= link_to "ユーザ登録", new_user_registration_path, :class => 'navbar-link' %>&nbsp|&nbsp
+    <% end%>
+</p>
+<hr>
   </head>
 
   <body>
