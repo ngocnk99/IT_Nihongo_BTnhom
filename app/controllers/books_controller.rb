@@ -66,6 +66,11 @@ class BooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
+      @book.reviews = BookReview.where(book_id: params[:id])
+      @book.rate = BookReview.where(book_id: params[:id]).average(:rate)
+      unless @book.rate
+        @book.rate = 'Not rated'
+      end
     end
 
     # Only allow a list of trusted parameters through.

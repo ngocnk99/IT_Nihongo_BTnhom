@@ -15,5 +15,10 @@
   <%= @book_review.review %>
 </p>
 
+<p>
+  <strong>Rate:</strong>
+  <%= @book_review.rate %>
+</p>
+
 <%= link_to 'Edit', edit_book_review_path(@book_review) %> |
 <%= link_to 'Back', books_path %>
