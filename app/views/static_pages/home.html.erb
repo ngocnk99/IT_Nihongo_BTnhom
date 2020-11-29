@@ -1,6 +1,12 @@
-<h1>HOME PAGE</h1>
-<% if user_signed_in? %>
-<%= link_to "Book", books_url%>
-<% else%>
-<%= link_to "Book", new_user_session_path%>
-<% end%>
+<container>
+  <div class="row d-flex justify-content-center">
+    <div class='col-6 text-cetner text-center'>
+      <h1 class>HOME PAGE</h1>
+      <% if user_signed_in? %>
+      <%= link_to "Book", books_url%>
+      <% else%>
+      <%= link_to "Book", new_user_session_path%>
+      <% end%>
+    </div>
+  </div>
+</container>
