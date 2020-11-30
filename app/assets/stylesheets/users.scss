@@ -6,3 +6,19 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .profile{
+     display:flex;
+     
+ }
+ 
+ .profile .describe{
+     margin-left:20px;
+ }
+ .profile h4{
+     margin-bottom:20px;
+ }
+ 
+ .bigwidth{
+     width:250px;
+ }

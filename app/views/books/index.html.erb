@@ -1,4 +1,11 @@
 
+  <form class="form-inline my-2 my-lg-0 d-flex " action="/name_search" method="GET">
+    <div class="m-auto">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="title" id="title">
+      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+    </div>
+  </form>
+
 <div class="booklist">
     <% @books.each do |book| %>
     <a  href="/books/<%= book.id %>">
@@ -36,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path %>
+<div class="button-primary " ><a href="/books/new">New Book</a></div>

@@ -11,27 +11,46 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="newbook">
+            <div class="form" style="position: relative; z-index: 1;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 m-auto">
+                            <div class="form__main">
+                                <form>
+                                    <div class="form__main-title">
+                                        Your Book
+                                    </div>
+                                    <div class="form-group field">
+                                       <%= form.label :title %>
+                                       <%= form.text_field :title %>
+                                    </div>
 
-  <div class="field">
-    <%= form.label :number_of_pages %>
-    <%= form.number_field :number_of_pages %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_area :detail %>
-  </div>
-  
-  <div class="field">
-     <%= form.label :image %>
-     <%= form.file_field :image %><br>
-  </div>
+                                    <div class="form-group field">
+                                        <%= form.label :number_of_pages %>
+                                         <%= form.number_field :number_of_pages %>
+                                    </div>
+                                      <div class="form-group field">
+                                        <%= form.label :detail %>
+                                      <%= form.text_area :detail %>
+                                    </div>
+                                      <div class="form-group field">
+                                       <%= form.label :image %>
+                                         <%= form.file_field :image %><br>
+                                    </div>
+                                    <div class="button-primary form__main-button actions" href="# ">  <%= form.submit %></div>
+                                </form>
+                            </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 <% end %>
+
+   
+

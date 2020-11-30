@@ -1,57 +1,75 @@
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+    <div class="book">
+         <div class="book_img">  
+            <% if @book.image.attached? %>
+            <%= image_tag @book.image,class: "card-img-top",style:"border-radius:2px;width:400px;height:auto;" %>
+            <% end %>
+        </div>
+        
+        <div class ="book_describe">
+          <h3>
+             <%= @book.title %>
+          </h3>
+        <p>
+        <strong>Rate:</strong>
+        <%= @book.rate %>
+        </p>
+          <p>
+            <strong>Auther:</strong>: ??
+          </p>
+          <p>
+              <strong>Number of pages:</strong> <%= @book.number_of_pages %>
+          </p>
+            <p>
+           <strong>Detail:</strong> <%= @book.detail %> 
+          </p>
+        </div>
+    </div>
 
-<p>
-  <strong>Number of pages:</strong>
-  <%= @book.number_of_pages %>
-</p>
-
-<p>
-  <strong>Rate:</strong>
-  <%= @book.rate %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @book.detail %>
-</p>
-
-<p >
-  <% if @book.image.attached? %>
-    <%= image_tag @book.image,class: "card-img-top",style:"border-radius:2px;width:200px;height:auto;" %>
-  <% end %>
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Rate</th>
-      <th>Review</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class = "reviewlist">
+ 
     <% @book.reviews.each do |book_review| %>
-      <tr>
-        <%if book_review.user_id!=current_user.id%>
-        <td><%= User.find(book_review.user_id)[:name] %></td>
-     
-        <td><%= book_review.rate %></td>
-        <td><%= book_review.review %></td>
+       <%if book_review.user_id!=current_user.id%>
+        <div class="review">
+           <div class ="review_describe">
+            <h4>
+             <%= User.find(book_review.user_id)[:name] %>:
+            </h4>
+         
+            <span class="review_describe-text">
+              <%= book_review.review %>
+            </span>
+            <div>
+              <div>
+              Rating:<%= book_review.rate %>
+              </div>
+              
+            </div>
+          </div>
+       </div>
         <%else%>
-        <td><%= User.find(book_review.user_id)[:name] %></td>
-       
-        <td><%= book_review.rate %></td>
-        <td><%= book_review.review %></td>
-        <td><%= link_to 'Edit', edit_book_review_path(book_review) %></td>
+         <div class="review">
+          <div class ="review_describe">
+            <h4>
+             <%= User.find(book_review.user_id)[:name] %>:
+            </h4>
+         
+            <span class="review_describe-text">
+              <%= book_review.review %>
+            </span>
+            <div>
+              <div>
+              Rating:<%= book_review.rate %>
+              </div>
+                <div>
+            <%= link_to 'Edit', edit_book_review_path(book_review) %>
+              </div>
+              
+            </div>
+          </div>
+          </div>
         <%end%>
-      </tr>
     <% end %>
-  </tbody>
-</table>
+</div>
 <%if @book.reviews.select{ |review| review.user_id == current_user.id }.count()==0 %>
 <%= render 'book_reviews/form', book_review: BookReview.new, current_book_id: @book.id %>
 <%end%>

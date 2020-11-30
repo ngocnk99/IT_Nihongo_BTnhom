@@ -27,3 +27,29 @@
  a,a:hover{
   text-decoration:none;
  }
+ 
+ 
+  .reviewlist{
+     background-color: #00b14f ;
+     padding: 8px 8px;
+ }
+ 
+ .review{
+   
+    background-color:white;
+    padding: 5px 0;
+    border-bottom: 1px solid gray  ;
+    margin-bottom:2px;
+ }
+ 
+ .review_describe{
+     margin-left:10px;
+      display:flex; 
+ }
+ 
+ .review_describe-text{
+  text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+ }
