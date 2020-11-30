@@ -1,11 +1,10 @@
 <container>
   <div class="row d-flex justify-content-center">
     <div class='col-6 text-cetner text-center'>
-      <h1 class>HOME PAGE</h1>
       <% if user_signed_in? %>
-      <%= link_to "Book", books_url%>
+      <%= link_to "Show ALL Books", books_url%>
       <% else%>
-      <%= link_to "Book", new_user_session_path%>
+      <%= link_to "Show ALL Books", new_user_session_path%>
       <% end%>
     </div>
   </div>

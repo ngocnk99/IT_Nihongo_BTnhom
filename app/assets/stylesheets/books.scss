@@ -6,3 +6,24 @@
  *= require_tree .
  *= require_self
  */
+ 
+ 
+ .booklist{
+     background-color: white ;
+     padding: 8px 16px;
+ }
+ 
+ .book{
+    display:flex; 
+    background-color:white;
+    padding: 5px 0;
+    border-bottom: 1px solid gray  ;
+ }
+ 
+ .book_describe{
+     margin-left:10px;
+ }
+ 
+ a,a:hover{
+  text-decoration:none;
+ }

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @book.title %>
@@ -20,9 +18,9 @@
   <%= @book.detail %>
 </p>
 
-<p>
+<p >
   <% if @book.image.attached? %>
-    <%= image_tag @book.image%>
+    <%= image_tag @book.image,class: "card-img-top",style:"border-radius:2px;width:200px;height:auto;" %>
   <% end %>
 </p>
 
@@ -30,7 +28,6 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Book</th>
       <th>Rate</th>
       <th>Review</th>
     </tr>
@@ -41,12 +38,12 @@
       <tr>
         <%if book_review.user_id!=current_user.id%>
         <td><%= User.find(book_review.user_id)[:name] %></td>
-        <td><%= book_review.book_id %></td>
+     
         <td><%= book_review.rate %></td>
         <td><%= book_review.review %></td>
         <%else%>
         <td><%= User.find(book_review.user_id)[:name] %></td>
-        <td><%= book_review.book_id %></td>
+       
         <td><%= book_review.rate %></td>
         <td><%= book_review.review %></td>
         <td><%= link_to 'Edit', edit_book_review_path(book_review) %></td>
@@ -58,5 +55,6 @@
 <%if @book.reviews.select{ |review| review.user_id == current_user.id }.count()==0 %>
 <%= render 'book_reviews/form', book_review: BookReview.new, current_book_id: @book.id %>
 <%end%>
-<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Edit', edit_book_path(@book) %>
+<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', books_path %>
