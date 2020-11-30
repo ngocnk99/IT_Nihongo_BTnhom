@@ -1,0 +1,9 @@
+<%= link_to "Create Store", new_store_path%>
+<table>
+  <% @stores.each do |store| %>
+    <tr>
+      <td><%= link_to store.name, store_path(store) %></td>
+      <td><%= button_to 'Edit', edit_store_path(store), method: 'get'%></td>
+      <td><%= button_to 'Remove', store_path(store), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</table>
