@@ -1,0 +1,7 @@
+<h3>Update Store Details</h3>
+<%= form_with model: @store do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <%= form.text_field :info, placeholder: "info" %>
+
+  <%= form.submit %>
+<% end %>
