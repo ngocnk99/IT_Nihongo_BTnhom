@@ -49,6 +49,11 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        BookGenre.where(:booK_id=>@book.id).destroy_all
+        params[:genres].each{
+          |id|
+          BookGenre.create(:book_id=>@book.id,:genre_id=>id)
+        }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }

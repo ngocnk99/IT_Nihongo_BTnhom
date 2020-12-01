@@ -38,11 +38,27 @@
                                        <%= form.label :image %>
                                          <%= form.file_field :image %><br>
                                     </div>
+                                    <%if book.persisted?%>
                                     <%Genre.all.each do |genre| %>
-                                      <div class="form-group field">
+                                    <%if book.genres.select{ |subgenre| subgenre.id == genre.id }.empty?%>
+                                    <div class="form-group field">
                                         <%= check_box_tag 'genres[]', genre.id%>
                                         <%= label_tag('genres[]', genre.name) %>
                                     </div>
+                                    <%else%>
+                                    <div class="form-group field">
+                                        <%= check_box_tag 'genres[]', genre.id, :checked=>true%>
+                                        <%= label_tag('genres[]', genre.name) %>
+                                    </div>
+                                    <%end%>
+                                    <%end%>
+                                    <%else%>
+                                    <%Genre.all.each do |genre| %>
+                                    <div class="form-group field">
+                                        <%= check_box_tag 'genres[]', genre.id%>
+                                        <%= label_tag('genres[]', genre.name) %>
+                                    </div>
+                                    <%end%>
                                     <%end%>
                                     <div class="button-primary form__main-button actions" href="# ">  <%= form.submit %></div>
                                 </form>
