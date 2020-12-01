@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :store_books
   resources :book_genres
   resources :genres
   get 'users/show'

@@ -2,6 +2,11 @@
 <%= form_with model: @store do |form| %>
   <%= form.text_field :name, placeholder: "name" %>
   <%= form.text_field :info, placeholder: "info" %>
-
+  <%Book.all.each do |book| %>
+                                       <div class="form-group field">
+                                         <%= check_box_tag 'books[]', book.id%>
+                                         <%= label_tag('books[]', book.title) %>
+                                     </div>
+                                     <%end%>
   <%= form.submit %>
 <% end %>
