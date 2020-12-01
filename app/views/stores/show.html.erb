@@ -1,3 +1,9 @@
 <%= link_to 'Remove', @store, method: :delete, data: { confirm: 'Are you sure?' } %>
 <h1><%= @store.name %></h1>
 <h4>"<%= @store.info %>"</h4>
+<p>
+            <strong>Book:</strong>
+           <% @store.books.each do |book|%>
+            <%= book.title %> 
+           </p>
+           <%end%>
