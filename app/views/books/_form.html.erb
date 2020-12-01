@@ -38,6 +38,12 @@
                                        <%= form.label :image %>
                                          <%= form.file_field :image %><br>
                                     </div>
+                                    <%Genre.all.each do |genre| %>
+                                      <div class="form-group field">
+                                        <%= check_box_tag 'genres[]', genre.id%>
+                                        <%= label_tag('genres[]', genre.name) %>
+                                    </div>
+                                    <%end%>
                                     <div class="button-primary form__main-button actions" href="# ">  <%= form.submit %></div>
                                 </form>
                             </div>

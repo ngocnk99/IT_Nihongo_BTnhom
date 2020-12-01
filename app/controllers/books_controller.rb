@@ -30,7 +30,12 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        params[:genres].each{
+          |id|
+          BookGenre.create(:book_id=>@book.id,:genre_id=>id)
+        }
         format.json { render :show, status: :created, location: @book }
+        
       else
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -68,6 +73,7 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
       @book.reviews = BookReview.where(book_id: params[:id])
       @book.rate = BookReview.where(book_id: params[:id]).average(:rate)
+      @book.genres = BookGenre.joins("JOIN genres ON book_genres.genre_id = genres.id").where(book_id: params[:id]).select("genres.*")
       unless @book.rate
         @book.rate = 'Not rated'
       end
@@ -75,6 +81,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :number_of_pages, :detail, :image)
+      params.require(:book).permit(:title, :number_of_pages, :detail, :image, :genres=>[])
     end
 end

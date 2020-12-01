@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :book_genres
+  resources :genres
   get 'users/show'
   root to: 'static_pages#home'
   #get 'static_pages/home'
