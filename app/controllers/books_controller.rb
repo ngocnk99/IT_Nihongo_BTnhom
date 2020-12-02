@@ -6,6 +6,13 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @books.map{
+      |book| 
+      book.rate = BookReview.where(book_id: book.id).average(:rate)
+      unless book.rate
+        book.rate = 'Not rated'
+      end  
+    }
   end
 
   # GET /books/1
