@@ -148,3 +148,7 @@
           width: 140px;
           height: 45px;
           line-height: 45px; }
+          
+           .flex label,label_tag{
+  display:inline!important;
+ }

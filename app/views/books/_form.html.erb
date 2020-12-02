@@ -38,28 +38,34 @@
                                        <%= form.label :image %>
                                          <%= form.file_field :image %><br>
                                     </div>
+                                    <div class="flex">
+                                        
                                     <%if book.persisted?%>
                                     <%Genre.all.each do |genre| %>
                                     <%if book.genres.select{ |subgenre| subgenre.id == genre.id }.empty?%>
-                                    <div class="form-group field">
+                                    <span class="form-group flex field">
                                         <%= check_box_tag 'genres[]', genre.id%>
                                         <%= label_tag('genres[]', genre.name) %>
-                                    </div>
+                                    </span>
                                     <%else%>
-                                    <div class="form-group field">
+                                    <span class="form-group flex field">
                                         <%= check_box_tag 'genres[]', genre.id, :checked=>true%>
                                         <%= label_tag('genres[]', genre.name) %>
-                                    </div>
+                                    </span>    
                                     <%end%>
                                     <%end%>
+                                    
                                     <%else%>
                                     <%Genre.all.each do |genre| %>
-                                    <div class="form-group field">
+                                    <span class="form-group flex field">
                                         <%= check_box_tag 'genres[]', genre.id%>
                                         <%= label_tag('genres[]', genre.name) %>
+                                    </span>
+                                    
+                                    <%end%>
+                                    <%end%>
                                     </div>
-                                    <%end%>
-                                    <%end%>
+                                    </div>
                                     <div class="button-primary form__main-button actions" href="# ">  <%= form.submit %></div>
                                 </form>
                             </div>

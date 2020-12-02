@@ -98,4 +98,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_162526) do
   add_foreign_key "book_genres", "genres"
   add_foreign_key "book_reviews", "books"
   add_foreign_key "book_reviews", "users"
+  add_foreign_key "store_books", "books"
+  add_foreign_key "store_books", "stores"
 end

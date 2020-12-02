@@ -1,9 +1,37 @@
-<%= link_to 'Remove', @store, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 <h1><%= @store.name %></h1>
 <h4>"<%= @store.info %>"</h4>
-<p>
-            <strong>Book:</strong>
-           <% @store.books.each do |book|%>
-            <%= book.title %> 
-           </p>
-           <%end%>
+
+<div class="booklist">    
+<strong>Book:</strong>
+<% @store.books.each do |book|%>
+ <a  href="/books/<%= book.id %>">
+      <div class="book">
+    
+        
+        <div class ="book_describe">
+          <h3>
+             <%= book.title %>
+          </h3>
+          <p>
+  <strong>Store:</strong>
+  <%= @store_book.store_id %>
+</p>
+
+          <div>
+            author: ??
+          </div>
+          <div>
+            number of pages : <%= book.number_of_pages %>
+          </div>
+          
+            <div>
+            detail : <%= book.detail %> 
+          </div>
+     
+        </div>
+    </div>
+     </a>
+
+<%end%>
+</div>

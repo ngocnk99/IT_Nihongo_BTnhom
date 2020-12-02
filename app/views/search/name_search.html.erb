@@ -1,24 +1,38 @@
-<h1>Search Results for "<%=params[:title]%>"</h1>
+<h3>Search Results for "<%=params[:title]%>"</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Number of pages</th>
-      <th>Rate</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
+<div class="booklist">
   <tbody>
     <% @book_results.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.number_of_pages %></td>
-        <th><%= book.rate%></th>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <a  href="/books/<%= book.id %>">
+       <div class="book">
+         <div class="book_img">  
+            <% if book.image.attached? %>
+            <%= image_tag book.image,class: "card-img-top",style:"border-radius:2px;width:200px;height:auto;" %>
+            <% end %>
+        </div>
+        
+        <div class ="book_describe">
+          <h3>
+             <%= book.title %>
+          </h3>
+          <div>
+            author: ??
+          </div>
+          <div>
+            number of pages : <%= book.number_of_pages %>
+          </div>
+          
+            <div>
+            detail : <%= book.detail %> 
+          </div>
+         <p>
+  <strong>Rate:</strong>
+  <%= book.rate %>
+</p>
+        </div>
+    </div>
+       </a>
     <% end %>
   </tbody>
-</table>
+</div>

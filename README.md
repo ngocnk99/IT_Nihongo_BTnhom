@@ -4,9 +4,10 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Run project:
-* bunble i
+* bundle i
 * yarn install --check-files
 * rails db:migrate
+* rails db:seed
 * rails s
 
 Things you may want to cover:
