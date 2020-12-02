@@ -2,6 +2,12 @@
 <%= form_with model: @store do |form| %>
   <%= form.text_field :name, placeholder: "name" %>
   <%= form.text_field :info, placeholder: "info" %>
-
+  <br>
+<%Book.all.each do |book| %>
+     <span class="form-group flex field">
+       <%= check_box_tag 'books[]', book.id%>
+       <%= label_tag('books[]', book.title) %>
+     </span>
+   <%end%>
   <%= form.submit %>
 <% end %>
